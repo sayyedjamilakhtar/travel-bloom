@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import HeroImage from "../../assets/home/hero.jpg";
 
@@ -18,9 +19,11 @@ function Hero() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit Turpis
             ridiculus tellus.
           </p>
-          <Button className="bg-white border-white !text-black hover:!text-white">
-            Book Room
-          </Button>
+          <Link to="/travel-bloom/hotels">
+            <Button className="bg-white border-white !text-black hover:!text-white">
+              Book Room
+            </Button>
+          </Link>
         </div>
       </div>
     </>

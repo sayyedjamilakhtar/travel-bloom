@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onGettingHotels } from "../../store/action";
 import CarouselImage1 from "../../assets/home/carousel-location01.jpg";
+import { MdLocationOn } from "react-icons/md";
 
 function HotelCards() {
   const dispatch = useDispatch();
@@ -31,22 +32,25 @@ function HotelCards() {
     const hotelList = hotels
       .slice(`${firstValue}`, `${secondValue}`)
       .map((hotel) => (
-        <div key={hotel.id} className="flex border-2 p-4 ">
+        <div key={hotel.id} className="flex border-2 p-4 gap-5 ">
           <img
             src={hotel.main_photo === "" ? CarouselImage1 : hotel.main_photo}
             alt={hotel.name}
-            className="w-20% max-w-[250px] min-w-[250px] h-[220px] object-cover object-center mb-5"
+            className="w-20% max-w-[250px] min-w-[250px] h-[250px] object-cover object-center"
           />
           <div>
-            <h1 className="mb-5 text-lg font-bold">{hotel.name}</h1>
-            <p>{hotel.address}</p>
+            <h1 className="mb-5 text-xl font-bold">{hotel.name}</h1>
+            <p className="flex items-center gap-2">
+              <MdLocationOn className="text-xl text-[#c77a63]" />{" "}
+              {hotel.address}
+            </p>
           </div>
         </div>
       ));
 
     return (
       <>
-        <div className="flex flex-col flex-wrap gap-10 w-[70%] m-auto">
+        <div className="flex flex-col flex-wrap gap-10 max-w-[980px] w-[80%] m-auto">
           {hotelList}
         </div>
         <div className="flex justify-center py-10">

@@ -8,6 +8,7 @@ import SearchPopup from "./SearchPopup";
 
 function Navbar() {
   const [showPhoneMenu, setShowPhoneMenu] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   useEffect(() => {
     if (showPhoneMenu) {
@@ -37,7 +38,10 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-8">
-          <CiSearch className="text-2xl cursor-pointer max-lg:hidden" />
+          <CiSearch
+            onClick={() => setShowSearchBar(true)}
+            className="text-2xl cursor-pointer max-lg:hidden"
+          />
           <Link to="/contact-us">
             <Button variant="outlined">Book your stay</Button>
           </Link>
@@ -84,7 +88,20 @@ function Navbar() {
         </div>
       </div>
 
-      <SearchPopup />
+      {/* Search popup  */}
+      <div
+        className={`${
+          showSearchBar ? "absolute w-full" : "hidden"
+        }  top-0 left-0 bg-[#FAF5F2] transition-all delay-300`}
+      >
+        <button
+          onClick={() => setShowSearchBar(false)}
+          className="absolute right-3 top-2"
+        >
+          Close
+        </button>
+        <SearchPopup />
+      </div>
     </>
   );
 }
